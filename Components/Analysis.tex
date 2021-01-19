@@ -1,0 +1,32 @@
+\section{Data Analysis} \label{Data Analysis}
+\subsection{Single Foil Data} \label{Single Foil Data}
+
+    The procedure described in Section \ref{Single Foil Test} serves as a way to test the flapping foil and lateral line. Any detected sensor bias drift will be recorded and accounted for using the high pass filter given in (\ref{Eq:High pass filter}). The data will then be analyzed using a Fourier Transform to determine the dominant frequency of the vortex wake, which should be identical to the foil's flapping frequency. Other dominant frequencies may indicate frequencies characteristic of the actuation mechanism or tank; identifying them during this phase will allow them to be eliminated in subsequent experiments. In addition, the phase difference between inline sensor pairs (s1-s3, s2-s4) will be used to calculate the distance between vortices. Based on the expected results, the known distance between sensors, \(D\), and the time of maximum differential pressure readings allows the freestream velocity to be calculated with \(\frac{D}{t_2-t_1}=U_\infty\). The calculated \(U_\infty\) should agree with the value programmed into the water tunnel. The estimated \(U_\infty\) and time between successive vorticity peaks allow the distance between vortices and the shedding frequency to be calculated.
+    
+\subsection{Tandem Foil Data} \label{Tandem Foil Data}
+
+    The previous sections have collected a host of pressure data that corresponds to known phase differences between flapping foils. This section will seek to find relationships between them by experimenting with a variety of algorithms and features. The tandem foil wake data will be analyzed for salient features that correlate with phase difference. While previous works point to a set of features that will be strong leads, the researchers will scan the recorded data and experiment with new traits. Based on the previous studies, the lateral line's pressure signature should hold features that can be used to infer the tandem fins' phase difference. Several methods will be used to identify this relationship.
+    
+% "Based on previous studies, we expected salient features of vortex interaction in the artificial lateral lines array's pressure signature."
+
+\subsubsection{Expected Tandem Wake} \label{Expected Tandem Wake}
+    
+    Based on the 2D wake interaction modes described in Section \ref{2D Wake Interaction}, for a majority of preset fin phase differences, \(\phi\), the fin vortices are expected to form loose pairs and drift away from the center line. For a small window of \(\phi\) the vortices will combine either constructively or destructively. In the pairing case, the lateral line is likely to perceive each individual vortex as a local maximum differential pressure, and, as seen in \citep{Chambers2014}, the distance of the vortex from the lateral line will correspond directly with the magnitude of this local maximum. The distance between each vortex in a pair can be found using the method described in Section \ref{Single Foil Data}. Based on this data, the lateral line can identify the degree of pairing between two vortices.
+    
+    For constructive or destructive vortex interaction, the vortices are expected to remain on the wake's center axis. The presence of significantly increased vorticity and, therefore, decreased pressure will identify constructive interaction, while decreased vorticity and a smaller differential pressure will identify destructive interactions.
+    
+\subsubsection{Expected Features} \label{Expected Features}
+    
+    Based on the previous work and discussion in Section \ref{Expected Tandem Wake}, a number of features should offer insight on the tandem fins' phase difference.
+    
+    The Fourier Transform will identify dominant frequencies for each trial. While a single vortex wake and constructive or destructive tandem wakes will produce a single frequency identical to the foils' flapping frequency, in the presence of multiple paired vortices, the Fourier Transform will translate the distance between vortices into higher frequencies. \citep{Venturelli2012} used the Fast Fourier Transform (FFT) over 3-5 second intervals to calculate the dominant frequencies in a vortex wake, and a similar practice may be applied to the tandem foil data to provide salient frequency domain features.
+    
+    An additional feature will be the relative perceived intensity of the vortices. As explained in Section \ref{Expected Tandem Wake}, the distance of vortices from the lateral line will vary directly with the magnitude of their pressure signature. Comparing this intensity with the intensity of inline, single vortices can allow a relationship between intensity and relative distance to be developed.
+    
+    A third promising feature option will be the number of vortices detected over one stroke cycle. Preliminary simulations in Lily Pad, an open source computational fluid dynamics program \citep{Weymouth2015}, suggest that, in addition to paired vortices, many phase differences will also create smaller, unpaired vortices. Examining the pressure data over the course of one stroke cycle and counting the number of local peaks could create another feature that can indicate the phase difference.
+    Several other viable features likely exist, and they will be identified by comparing the single foil wake data with the multiple tandem wakes' data.
+\subsubsection{Mapping Features to Phase Difference} \label{Mapping Features to Phase Difference}
+    
+    There are several methods that could map one or all of the features developed in Section \ref{Expected Features} to the tandem fin phase angle. One strategy will be a regression plot with individual features plotted against their corresponding phase angle. Calculating the best fit line for this plot may show a relationship that allows phase angle to be directly calculated based on observed wake features. A fit line's coefficient of determination, \(R^2\), will indicate its accuracy, as this value is indicative of the plotted points' distance from the estimated fit line. The feature that allows the most accurate line of best fit to be drawn will be identified.
+    
+    Alternatively, several features may be combined at once and related to the foils' phase difference with a Bayesian classifier, decision tree, lookup table, or particle filter. MATLAB contains all of these methods, and they can be employed relatively quickly for cross comparison. Other methods may be tested, but these will serve as a starting point.

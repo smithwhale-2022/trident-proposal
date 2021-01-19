@@ -1,47 +1,55 @@
 \documentclass[10pt]{article}
 
-\title{Proposal title here}
+\title{Characterizing tandem fin wake interaction using lateral line inspired sensors}
 \author{MIDN 2/C Cameron Smith\thanks{Department of Weapons, Robotics, and Control Engineering at the United States Naval Academy. Address for correspondence \emph{m226072@usna.edu}}}
 \date{\today}
-
+\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage{amsmath,amsfonts,amssymb}
+%\DeclareSIUnit{\sec}{s}
+%\DeclareSIUnit{\centimeter}{cm}
+%\DeclareSIUnit{\meter}{m}
+%\DeclareSIUnit{\kilogram}{kg}
+\usepackage[plain]{fancyref}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage[round,authoryear]{natbib}
 \bibliographystyle{apalike}
-
 \begin{document}
 \maketitle
-
 \begin{abstract}
-The lateral line structures in fish contain two types of sensors: the surface neurotransmitters, which detect slow, even flow, and canal neurotransmitters (CNs), which detect changing
-%Is "neurotransmitter" the right word here or is it like neuromast or something
-flow. In \citep{klein2011title} these CNs were built artificially with small fiber optic strands that were watched by a light sensor as water flowed past them in a small channel. When the cant of the strands changed, the amount of light seen by the sensor either increased or decreased, producing an analog voltage change. As shown in a separate Klein experiment \citep{klein2011title}, these sensors were able to correctly indicate the frequency of vortex shedding from a cylinder downstream of the sensors. I propose that these sensors can be replicated and incorporated into a rigid fluke in order to
-%first thing a biologist thinks is why rigid nothing is rigid
-better understand the complex vorticity induced on it by upstream fin arrangements. The first phase of this experiment will be to build the sensors themselves and a rigid fluke body to embed them in. The second phase will be to validate the sensors by incorporating them into a line at the center of the fluke and exposing them to vortex shedding at a known frequency from a cylinder. Last, they will be installed at several different points in the fluke and an artificial dorsal fin will be placed upstream. When the system is run, the dorsal fin will produce a complex flow over the fluke that has vortical properties (need to find good source here), and the frequency output at the different sensors will indicate the frequency of vortices experienced at these different points in the fluke, while their magnitude will indicate the strength of these vortices.
+
+    Fish have demonstrated extreme agility underwater, a desirable trait for unmanned underwater vehicles (UUVs). Much of a fish's maneuverability can be attributed to the complex interactions between the wakes made by its multiple control surfaces. One such interaction of great interest to this project is the interference between vortex wakes produced by the dorsal and caudal fins. The degree of thrust increase from these interactions is influenced by the phase difference between the flapping fins. To incorporate this type of movement in bio-inspired vehicles, it is desirable to develop a feedback architecture that detects the degree of wake interaction.
+    %This research project will work toward the development of a feedback control loop for two, two-dimensional tandem fins. In previous work, pressure sensor arrays have accurately characterized single vortex streets. This project will study their response to double vortex wakes to develop a system that provides real-time feedback on tandem foil wake interactions. The pressure sensor array for this project is inspired by the lateral line in fish, an organ that detects flow oscillations.
+    
+    The goal of this project is to engineer a two dimensional tandem fin system capable of coordinating flapping foils to improve thrust generation using an array of pressure sensors inspired by the fish lateral line system. This research draws inspiration from the flow control properties of dorsal and caudal fin coordination in bony fish and their ability to sense important fluid properties with their lateral line. It also applies observations and techniques used by previous teams to study single vortex wakes using artificial lateral lines. Several experimental trials will be performed in USNA's Large Re-Circulating Water Tunnel to collect wake pressure data downstream from two tandem fins flapping at multiple phase differences. Based on these trials, features of the data will be found that vary according to phase difference. Relationships between these features and the known phase difference will be found using nonlinear methods, enabling a system to map observed wake features to upstream phase difference.
+    
+    Progress in this field will be beneficial, as control systems capable of calculating tandem foil phase difference will directly relate it to foil thrust production. This will enable more robust and agile underwater locomotion, which contributes to the ability to perform dexterous tasks in difficult environments, such as closely studying coral reefs, maneuvering through subsea obstacles, and UUV schooling.
+    
 \end{abstract}
 % anatomy wise - dorsal fin on a whale is at 90 deg to the 
 % tail flukes.. previous usna work dealt with humpback whale
 % pectoral fin which does not have an upstream thing 
-
-
-{\scriptsize Keywords: flapping foil, sensing, biomechanics, hydrodynamics, maneuvering}
+{\scriptsize Keywords: flapping foil, sensing, biomechanics, hydrodynamics, maneuvering, lateral line, tandem foils}
+\tableofcontents
+\input{Components/Background} 
+\input{Components/Previouswork} 
+\input{Components/Goalsandobj}
+\input{Components/Methods}
+\input{Components/Analysis}
+\input{Components/Implications}
+\input{Components/Riskmanagement}
+\input{Components/Conclusion}
 
 \bibliography{trident.bib}
+%\input{Components/Appendix A}
 \end{document}
-
-
-%Good morning Professors,
-%
-%After reading through several more sources and deliberating, I believe I have a better defined project roadmap. I am also working on my proposal and would like to schedule another meet with you all when you are next available to touch base and talk about the way forward. How is Tuesday, December 1, at 0920? I am also available during lunch today and Tuesday, plus 1-3rd period on Wednesday.
-%
-%Places where this can be improved: There is a line of research that uses differential pressure gauges instead of artificial optical hair sensors, and these might be more practical because they’re ready made and easy to buy. Also, there is likely research on how to ‘tune’ CNs to specific frequencies by placing holes different distances apart from each other, and this could be incorporated into the construction phase of this project.
-
-
-
 
 % DE: things to consider; sensing forces, sensing vibration,
 % sensing if flow is attached, sensing lift/drag on fin, 
 % sensing "luffing"... we've jumped straight to something about
 % vorticity and circulation from an upstream body without
 % explaining why; also look up stall sensing for wings, 
-% GI taylor vorticity video wheere he makes little devices 
+% GI taylor vorticity video where he makes little devices 
 % track vorticity...
-
